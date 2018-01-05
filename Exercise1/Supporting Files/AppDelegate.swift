@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Exercise1
 //
-//  Created by Alex Paul on 1/4/18.
-//  Copyright © 2018 Alex Paul. All rights reserved.
+//  Created by C4Q on 1/4/18.
+//  Copyright © 2018 C4Q. All rights reserved.
 //
 
 import UIKit
@@ -15,23 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        // setup view hierarchy
-        let viewController = Exercise1ViewController()
-        let navController = UINavigationController(rootViewController: viewController)
-        
-        // setup UIWindow
+        //setup view hierarchy
+        let viewController = MainViewController()
+        //setup UIWindow
         
         // 1) initializes and sets the frame
         window = UIWindow(frame: UIScreen.main.bounds)
         
         // 2) initial view controller
-        window?.rootViewController = navController
+        window?.rootViewController = viewController
         
         // 3) set to main window and make it visible on screen
         window?.makeKeyAndVisible()
-        
         return true
     }
 

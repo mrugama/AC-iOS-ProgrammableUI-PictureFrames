@@ -2,25 +2,27 @@
 //  CustomView.swift
 //  Exercise1
 //
-//  Created by Alex Paul on 1/4/18.
-//  Copyright © 2018 Alex Paul. All rights reserved.
+//  Created by C4Q on 1/4/18.
+//  Copyright © 2018 C4Q. All rights reserved.
 //
 
 import UIKit
 
 class CustomView: UIView {
     
-    lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
+    lazy var mainStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis  = .vertical
+        stackView.alignment = .center
+        stackView.distribution  = .fillEqually
+        stackView.spacing   = 0.0
+        return stackView
     }()
     
     lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = #imageLiteral(resourceName: "placeholder-image")
-        return imageView
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        return image
     }()
     
     lazy var nameLabel: UILabel = {
@@ -28,17 +30,6 @@ class CustomView: UIView {
         label.text = "PlaceHolder"
         return label
     }()
-
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
     
     convenience init(image: UIImage,
                      text: String,
@@ -52,39 +43,39 @@ class CustomView: UIView {
         setupViews()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: CGRect.zero)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
     private func commonInit() {
         setupViews()
     }
     
     private func setupViews() {
-        setupContainerView()
+        setupContainerViews()
         setupNameLabel()
-        setupImageView()
     }
     
-    private func setupContainerView() {
-        addSubview(containerView)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.75).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        containerView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+    private func setupContainerViews() {
+        addSubview(mainStackView)
+        mainStackView.translatesAutoresizingMaskIntoConstraints = false
+        mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive =  true
+        mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
     
     private func setupNameLabel() {
-        addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
-        nameLabel.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 16).isActive = true
-    }
-    
-    private func setupImageView() {
-        addSubview(imageView)
+        mainStackView.addArrangedSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        
+        mainStackView.addArrangedSubview(nameLabel)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
     }
-
 }

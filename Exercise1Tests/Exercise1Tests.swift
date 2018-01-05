@@ -2,8 +2,8 @@
 //  Exercise1Tests.swift
 //  Exercise1Tests
 //
-//  Created by Alex Paul on 1/4/18.
-//  Copyright © 2018 Alex Paul. All rights reserved.
+//  Created by C4Q on 1/4/18.
+//  Copyright © 2018 C4Q. All rights reserved.
 //
 
 import XCTest
